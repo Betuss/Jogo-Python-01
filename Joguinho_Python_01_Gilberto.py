@@ -1,7 +1,7 @@
 
 # coding: utf-8
 
-# In[ ]:
+# In[19]:
 
 import random
 import copy
@@ -24,6 +24,8 @@ dado = 0
 chanceCair = 0.0
 lista = []
 matriz = []
+andarFinal = []
+
 
 for i in range(500):
     andar = 0
@@ -49,31 +51,39 @@ for i in range(500):
 
         lista.append(andar)
 
-    if i == 223:         #alterar número para comparar se está certo
-        print(lista)
+    #if i == 223:         #alterar número para comparar se está certo
+     #   print(lista)
         
-    
     i += 1
     matriz.append(copy.deepcopy(lista))
+    andarFinal.append(andar)
 
 
-# In[ ]:
+# In[47]:
 
-repetir = True
+# Get matplotlib graphics to show up inline.
+get_ipython().magic('matplotlib inline')
 
-while(repetir):
-    resposta = input("Selecionar interação (0 a 499): ")
-    print("\n")
-    intRes = int(resposta)
-    
-    if intRes >= 0 and intRes <= 499:
-        print(matriz[intRes])
-        repetir = False
-    else:
-        print("Interação inexistente, selecione um valor de 0 a 499.")
+plt.rcParams['figure.figsize'] = (20, 6)
+
+import matplotlib.pyplot as plt
+
+rodada = andarFinal
+
+# With matplotlib, you can create a bunch of different plots in Python. The most basic plot is the line plot.
+plt.plot(rodada)
+
+# labels
+xlab = 'Rodadas'
+ylab = 'Andar final'
+title = 'Joguinho Python'
+
+plt.xlabel(xlab)
+plt.ylabel(ylab)
+plt.title(title)
+
+plt.yticks([0,25,50,75,100,125,150])
 
 
-# In[ ]:
-
-
+get_ipython().magic('time plt.show()')
 
